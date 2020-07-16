@@ -1,4 +1,4 @@
-var buttonColors = ['red', 'blue', 'green', 'yellow'];
+var buttonColors = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
 var userClickedPattern = [];
 var level = 0;
@@ -14,18 +14,18 @@ function nextSequence() {
     playPattern(i);
   }
   level++;
-  $('#level-title').text('Level ' + level);
+  $("#level-title").text("Level " + level);
 }
 
-$(document).on('keydown', function () {
+$(document).on("keydown", function () {
   if (gamePattern.length === 0) {
     nextSequence();
   } else {
-    console.log('The game has already begun!');
+    console.log("The game has already begun!");
   }
 });
 
-$('.btn').click(function (event) {
+$(".btn").click(function (event) {
   console.log(event.target.id);
   var userChosenColor = event.target.id;
   userClickedPattern.push(userChosenColor);
@@ -35,7 +35,7 @@ $('.btn').click(function (event) {
 
   if (userClickedPattern[currentColor] === gamePattern[currentColor]) {
     currentColor++;
-    console.log('User Got the color right!');
+    console.log("User Got the color right!");
     if (userClickedPattern.length === gamePattern.length) {
       userClickedPattern = [];
       currentColor = 0;
@@ -44,25 +44,25 @@ $('.btn').click(function (event) {
   } else {
     if (level > highScore) {
       highScore = level;
-      $('.highScore').text(`Highest Level Achieved: ${highScore}`);
+      $(".highScore").text(`Highest Level Achieved: ${highScore}`);
     }
 
-    var audio = new Audio('sounds/wrong.mp3');
+    var audio = new Audio("sounds/wrong.mp3");
     audio.play();
-    $('body').addClass('game-over');
+    $("body").addClass("game-over");
     setTimeout(function () {
-      $('body').removeClass('game-over');
+      $("body").removeClass("game-over");
     }, 100);
     gamePattern = [];
     userClickedPattern = [];
     level = 0;
-    $('#level-title').text('Game Over, Press Any Key to Restart');
+    $("#level-title").text("Game Over, Press Any Key to Restart");
   }
 });
 
 function playPattern(yeet) {
   setTimeout(function () {
-    $('#' + gamePattern[yeet])
+    $("#" + gamePattern[yeet])
       .fadeIn(100)
       .fadeOut(100)
       .fadeIn(100);
@@ -71,14 +71,14 @@ function playPattern(yeet) {
 }
 
 function playSound(name) {
-  var audio = new Audio('Sounds/' + name + '.mp3');
+  var audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
 }
 
 function animatePress(currentColor) {
-  $('#' + currentColor).addClass('pressed');
+  $("#" + currentColor).addClass("pressed");
 
   setTimeout(function () {
-    $('#' + currentColor).removeClass('pressed');
+    $("#" + currentColor).removeClass("pressed");
   }, 100);
 }
