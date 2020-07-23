@@ -62,11 +62,7 @@ $(".btn").click(function (event) {
 
 function playPattern(color) {
   setTimeout(function () {
-<<<<<<< HEAD:game.js
     $("#" + gamePattern[color])
-=======
-    $("#" + gamePattern[yeet])
->>>>>>> 196c160a2e10327ed9b3f76d5950e4486f98bb58:public/game.js
       .fadeIn(100)
       .fadeOut(100)
       .fadeIn(100);
